@@ -62,12 +62,11 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 	val benchmarkRule = MacrobenchmarkRule()
 
 	@Test
-	@RequiresApi(Build.VERSION_CODES.N)
+	//@RequiresApi(Build.VERSION_CODES.N)
 	fun startupNoCompilation() = startup(CompilationMode.None())
 
 
 	@Test
-	@RequiresApi(Build.VERSION_CODES.N)
 	fun startupBaselineProfileDisabled() = startup(
 		CompilationMode.Partial(
 			baselineProfileMode = BaselineProfileMode.Disable,
@@ -76,7 +75,6 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 	)
 
 	@Test
-	@RequiresApi(Build.VERSION_CODES.N)
 	fun startupBaselineProfile() = startup(
 		CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Require)
 	)
