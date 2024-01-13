@@ -50,6 +50,23 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 	fun startupBaselineProfile() = startup(
 		CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Require)
 	)
+
+	@Test
+	fun startupFullCompilation() = startup(CompilationMode.Full())
+
+
+	private fun startup(compilationMode: CompilationMode) = benchmarkRule.measureRepeated(
+		packageName = PACKAGE_NAME,
+		metrics = listOf(StartupTimingMetric()),
+		compilationMode = compilationMode,
+		iterations = 5,
+		startupMode = startupMode,
+		setupBlock = {
+			pressHome()
+		},
+	) {
+		startActivityAndWait()
+	}
 }
 
 
