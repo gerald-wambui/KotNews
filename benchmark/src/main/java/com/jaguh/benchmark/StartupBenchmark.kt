@@ -46,6 +46,10 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 	)
 
 	@Test
+	@RequiresApi(Build.VERSION_CODES.N)
+	fun startupBaselineProfile() = startup(
+		CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Require)
+	)
 }
 
 
