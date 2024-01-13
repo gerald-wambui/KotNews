@@ -27,7 +27,7 @@ import org.junit.runner.RunWith
  */
 
 
-/*
+/**
  *Run this benchmark in Android studio to see startup measurements and capture system traces to
  * investigate the performance of your app from a cold state
  */
@@ -35,7 +35,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ColdStartupBenchmark: AbstractStartupBenchmark(StartupMode.COLD)
 
-/*
+/**
  *Run this benchmark in Android studio to see startup measurements and capture system traces to
  * investigate the performance of your app from a warm state
  */
@@ -44,7 +44,7 @@ class ColdStartupBenchmark: AbstractStartupBenchmark(StartupMode.COLD)
 class WarmStartupBenchmark: AbstractStartupBenchmark(StartupMode.WARM)
 
 
-/*
+/**
  *Run this benchmark in Android studio to see startup measurements and capture system traces to
  * investigate the performance of your app from a hot state
  */
@@ -53,6 +53,10 @@ class WarmStartupBenchmark: AbstractStartupBenchmark(StartupMode.WARM)
 class HotStartupBenchmark: AbstractStartupBenchmark(StartupMode.HOT)
 
 
+/**
+ * Base class for benchmarks with different startup modes.
+ * Enable app startups from various states of baseline profiles/compilation modes.
+ */
 abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 	@get:Rule
 	val benchmarkRule = MacrobenchmarkRule()
