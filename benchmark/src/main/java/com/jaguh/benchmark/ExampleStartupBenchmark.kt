@@ -28,7 +28,7 @@ class ExampleStartupBenchmark {
 
 	@Test
 	fun startup() = benchmarkRule.measureRepeated(
-		packageName = "com.jaguh.kotnews",
+		packageName = PACKAGE_NAME,
 		metrics = listOf(StartupTimingMetric()),
 		iterations = 5,
 		startupMode = StartupMode.COLD
