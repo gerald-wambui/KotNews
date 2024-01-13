@@ -98,21 +98,3 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
 		startActivityAndWait()
 	}
 }
-
-
-@RunWith(AndroidJUnit4::class)
-class StartupBenchmark {
-	@get:Rule
-	val benchmarkRule = MacrobenchmarkRule()
-
-	@Test
-	fun startup() = benchmarkRule.measureRepeated(
-		packageName = PACKAGE_NAME,
-		metrics = listOf(StartupTimingMetric()),
-		iterations = 5,
-		startupMode = StartupMode.COLD
-	) {
-		pressHome()
-		startActivityAndWait()
-	}
-}
