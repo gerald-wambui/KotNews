@@ -1,5 +1,9 @@
 package com.jaguh.benchmark
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.benchmark.macro.BaselineProfileMode
+import androidx.benchmark.macro.CompilationMode
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
@@ -20,6 +24,31 @@ import org.junit.runner.RunWith
  * Run this benchmark from Studio to see startup measurements, and captured system traces
  * for investigating your app's performance.
  */
+
+
+
+abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
+	@get:Rule
+	val benchmarkRule = MacrobenchmarkRule()
+
+	@Test
+	@RequiresApi(Build.VERSION_CODES.N)
+	fun startupNoCompilation() = startup(CompilationMode.None())
+
+
+	@Test
+	@RequiresApi(Build.VERSION_CODES.N)
+	fun startupBaselineProfileDisabled() = startup(
+		CompilationMode.Partial(
+			baselineProfileMode = BaselineProfileMode.Disable,
+			warmupIterations = 1
+		),
+	)
+
+	@Test
+}
+
+
 @RunWith(AndroidJUnit4::class)
 class StartupBenchmark {
 	@get:Rule
