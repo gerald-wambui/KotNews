@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * This is an example startup benchmark.
+ * This is a startup benchmark.
  *
  * It navigates to the device's home screen, and launches the default activity.
  *
