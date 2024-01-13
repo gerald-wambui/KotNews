@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KotNews"
 include(":app")
+include(":benchmark")
