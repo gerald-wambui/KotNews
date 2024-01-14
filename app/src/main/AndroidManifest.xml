@@ -34,6 +34,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.KotNews">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +42,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="ui.details.DetailActivity"
+            android:launchMode="singleTop"/>
+        
+        <provider
+            android:authorities="com.jaguh.kotnews.androidx-startup"
+            android:name="androidx.startup.InitializationProvider"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="com.jaguh.kotnews.initializer.TimberInitializer"
+                android:value="androidx.startup"
+                />
+
+        </provider>
+
+        <profileable
+            android:shell="true"
+            />
+
+
     </application>
 
 </manifest>
